@@ -15,7 +15,7 @@ Calculate the **cancellation rate** of ride requests with unbanned users for eac
 ### Table: `Trips`
 
 | Column Name | Type    |
-|-------------|---------||
+|-------------|---------|
 | id          | int     |
 | client_id   | int     |
 | driver_id   | int     |

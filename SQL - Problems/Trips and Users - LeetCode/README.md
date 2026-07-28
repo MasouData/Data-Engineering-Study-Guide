@@ -129,7 +129,7 @@ Cancellation Rate = Canceled Trips (unbanned users only) / Total Trips (unbanned
 
 ## Solution
 
-See the accompanying Databricks notebook: [Trips and Users - LeetCode](./Trips%20and%20Users%20-%20LeetCode.sql)
+See the accompanying Databricks notebook: [solution.sql](./solution.sql)
 
 ### SQL Solution Code:
 

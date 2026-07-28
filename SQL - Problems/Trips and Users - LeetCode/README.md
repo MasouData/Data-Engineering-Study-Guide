@@ -8,36 +8,45 @@ Calculate the **cancellation rate** of ride requests with unbanned users for eac
 
 ## Table Schemas
 
+<table>
+<tr>
+<td width="50%" valign="top">
+
 ### Table: `Trips`
 
-| Column Name | Type    | Description |
-|-------------|---------|-------------|
-| id          | int     | Primary key - unique trip ID |
-| client_id   | int     | Foreign key to Users table |
-| driver_id   | int     | Foreign key to Users table |
-| city_id     | int     | City identifier |
-| status      | enum    | Trip status: `'completed'`, `'cancelled_by_driver'`, `'cancelled_by_client'` |
-| request_at  | varchar | Request date |
+| Column Name | Type    |
+|-------------|---------||
+| id          | int     |
+| client_id   | int     |
+| driver_id   | int     |
+| city_id     | int     |
+| status      | enum    |
+| request_at  | varchar |
 
 **Notes:**
 * `id` is the primary key
 * `client_id` and `driver_id` reference `users_id` in the Users table
-* `status` is an ENUM with values: `'completed'`, `'cancelled_by_driver'`, `'cancelled_by_client'`
+* `status` values: `'completed'`, `'cancelled_by_driver'`, `'cancelled_by_client'`
 
----
+</td>
+<td width="50%" valign="top">
 
 ### Table: `Users`
 
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| users_id    | int  | Primary key - unique user ID |
-| banned      | enum | User ban status: `'Yes'`, `'No'` |
-| role        | enum | User role: `'client'`, `'driver'`, `'partner'` |
+| Column Name | Type |
+|-------------|------|
+| users_id    | int  |
+| banned      | enum |
+| role        | enum |
 
 **Notes:**
 * `users_id` is the primary key
-* `banned` is an ENUM: `'Yes'`, `'No'`
-* `role` is an ENUM: `'client'`, `'driver'`, `'partner'`
+* `banned` values: `'Yes'`, `'No'`
+* `role` values: `'client'`, `'driver'`, `'partner'`
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -62,6 +71,10 @@ Cancellation Rate = Canceled Trips (unbanned users only) / Total Trips (unbanned
 
 ### Input Data
 
+<table>
+<tr>
+<td width="65%" valign="top">
+
 **Trips table:**
 
 | id | client_id | driver_id | city_id | status              | request_at |
@@ -77,6 +90,9 @@ Cancellation Rate = Canceled Trips (unbanned users only) / Total Trips (unbanned
 | 9  | 3         | 10        | 12      | completed           | 2013-10-03 |
 | 10 | 4         | 13        | 12      | cancelled_by_driver | 2013-10-03 |
 
+</td>
+<td width="35%" valign="top">
+
 **Users table:**
 
 | users_id | banned | role   |
@@ -89,6 +105,10 @@ Cancellation Rate = Canceled Trips (unbanned users only) / Total Trips (unbanned
 | 11       | No     | driver |
 | 12       | No     | driver |
 | 13       | No     | driver |
+
+</td>
+</tr>
+</table>
 
 ---
 

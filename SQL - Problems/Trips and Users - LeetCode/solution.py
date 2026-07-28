@@ -162,3 +162,16 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,Alternative (Shorter Version)
+# MAGIC %sql
+# MAGIC SELECT 
+# MAGIC     request_at AS Day,
+# MAGIC     ROUND(
+# MAGIC         AVG(status != 'completed'), 
+# MAGIC         2
+# MAGIC     ) AS `Cancellation Rate`
+# MAGIC FROM Trips t
+# MAGIC JOIN Users c ON t.client_id = c.users_id AND c.banned = 'No'
+# MAGIC JOIN Users d ON t.driver_id = d.users_id AND d.banned = 'No'
+# MAGIC WHERE request_at BETWEEN '2013-10-01' AND '2013-10-03'
+# MAGIC GROUP BY request_at;
